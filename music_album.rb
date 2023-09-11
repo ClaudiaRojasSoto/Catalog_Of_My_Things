@@ -4,12 +4,12 @@ class MusicAlbum < Item
   attr_accessor :on_spotify
 
   def initialize(on_spotify)
-    super(params)
+    super
     @on_spotify = on_spotify
   end
 
   def on_spotify?
-    @on_spotify == true
+    @on_spotify
   end
 
   private
