@@ -2,9 +2,8 @@ class Genre
   attr_accessor :name
 
   def initialize(id, name)
-    @name = name
-    private
     @id = id
+    @name = name
     @items = []
   end
 
