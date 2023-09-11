@@ -1,3 +1,3 @@
-def main
-  'mock method'
-end
+require_relative 'app'
+app = App.new
+app.run
