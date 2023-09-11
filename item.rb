@@ -1,5 +1,5 @@
 class Item
-  attr_accessor :id, :genre, :author, :label, :publish_date
+  attr_accessor :genre, :author, :label, :publish_date
 
   def initialize(params = {})
     self.class.id_counter = (self.class.id_counter || 0) + 1
@@ -35,6 +35,8 @@ class Item
   end
 
   private
+
+  attr_reader :id, :archived
 
   def can_be_archived?
     Time.now.year - @publish_date.year > 10
