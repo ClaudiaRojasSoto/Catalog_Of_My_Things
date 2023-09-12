@@ -28,8 +28,15 @@ class Item
   end
 
   def add_label(label)
-    @label = label
-    label.items.push(self) unless label.items.include?(self)
+    if label.is_a?(Hash)
+      if label.key?('items')
+        label['items'] << self
+      else
+        puts "Hash does not contain the 'items' key."
+      end
+    else
+      label.items << self
+    end
   end
 
   private
