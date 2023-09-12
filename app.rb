@@ -17,6 +17,7 @@ class App
   def initialize
     initialize_collections
     initialize_actions
+    load_books_from_json
     @games = []
     @authors = initialize_author
     @taked_games = []
@@ -35,7 +36,29 @@ class App
     end
   end
 
+  def find_label_by_title(title)
+    @labels.find { |label| label.title == title }
+  end
+
   private
+
+  # Nueva función para cargar libros desde un archivo JSON
+  def load_books_from_json(filename = 'books.json')
+    return unless File.exist?(filename)
+
+    data = JSON.parse(File.read(filename))
+    data.each do |book_data|
+      book = Book.new(
+        id: book_data['id'],
+        title: book_data['title'], # Asegúrate de que esto esté en tus datos JSON
+        publisher: book_data['publisher'],
+        cover_state: book_data['cover_state'],
+        publish_date: book_data['publish_date'],
+        label: find_label_by_title(book_data['label'])
+      )
+      @books << book
+    end
+  end
 
   def write_books_to_json(filename = 'books.json')
     books_data = @books.map do |book|
