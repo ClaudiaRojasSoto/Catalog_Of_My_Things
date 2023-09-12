@@ -6,11 +6,15 @@ require_relative 'music_album'
 require_relative 'modules/music_album_module'
 require_relative 'genre'
 require_relative 'modules/genre_module'
+require_relative 'modules/game_author_module'
 
 class App
+  include GameAuthor
   def initialize
     initialize_collections
     initialize_actions
+    @games = []
+    @authors = initialize_author
   end
 
   def run
@@ -31,10 +35,8 @@ class App
   def initialize_collections
     @books = []
     @music_albums = []
-    @games = []
     @labels = initialize_labels
     @genres = initialize_genres
-    @authors = []
   end
 
   def initialize_actions
@@ -103,7 +105,7 @@ class App
   end
 
   def add_game
-    'mock'
+    add_games
   end
 
   def list_all_books
@@ -115,7 +117,7 @@ class App
   end
 
   def list_all_games
-    'mock'
+    list_game
   end
 
   def list_all_labels
@@ -127,6 +129,6 @@ class App
   end
 
   def list_all_authors
-    'mock'
+    list_author
   end
 end
