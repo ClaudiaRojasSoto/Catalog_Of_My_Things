@@ -21,8 +21,8 @@ module GameAuthor
   end
 
   def list_author
-    @authors.each_with_index do |elt, idx|
-      puts "\n #{idx}) first name : #{elt.first_name} last name : #{elt.last_name}"
+    @authors.each_with_index do |elt, _idx|
+      puts "\n   ' #{elt.first_name}  #{elt.last_name} ' "
     end
   end
 
