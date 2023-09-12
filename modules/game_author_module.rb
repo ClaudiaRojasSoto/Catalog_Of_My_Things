@@ -8,8 +8,9 @@ module GameAuthor
     last_played = add_last_played_at
     publish_date = add_publish_date
     list_author
-    author = @authors[index_author]
-    [multiplayer, last_played, publish_date, author, index_author]
+    index = index_author.to_i
+    author = @authors[index]
+    [multiplayer, last_played, publish_date, author, index]
   end
 
   def list_game

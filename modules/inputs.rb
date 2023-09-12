@@ -23,5 +23,5 @@ end
 
 def index_author
   print 'Add author by the index  : '
-  gets.chomp.to_i
+  gets.chomp
 end
