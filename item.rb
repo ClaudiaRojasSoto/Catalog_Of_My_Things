@@ -37,6 +37,7 @@ class Item
   attr_reader :archived
 
   def can_be_archived?
-    Time.now.year - @publish_date.year > 10
+    return (Time.now.year - @publish_date.year > 10)
+  
   end
 end
