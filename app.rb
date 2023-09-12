@@ -2,6 +2,10 @@ require_relative 'book'
 require_relative 'modules/book_module'
 require_relative 'label'
 require_relative 'modules/label_module'
+require_relative 'music_album'
+require_relative 'modules/music_album_module'
+require_relative 'genre'
+require_relative 'modules/genre_module'
 
 class App
   def initialize
@@ -29,7 +33,7 @@ class App
     @music_albums = []
     @games = []
     @labels = initialize_labels
-    @genres = []
+    @genres = initialize_genres
     @authors = []
   end
 
@@ -53,6 +57,14 @@ class App
       Label.new('1', 'New', 'Green'),
       Label.new('2', 'Older', 'Yellow'),
       Label.new('3', 'Gift', 'Red')
+    ]
+  end
+
+  def initialize_genres
+    [
+      Genre.new('1', 'Rock'),
+      Genre.new('2', 'Jazz'),
+      Genre.new('3', 'Classical')
     ]
   end
 
@@ -83,7 +95,11 @@ class App
   end
 
   def add_music_album
-    'mock'
+    if @labels.empty? || @genres.empty?
+      puts 'No labels or genres available. Please add them first.'
+    else
+      MusicAlbumModule.add_music_album(@music_albums, @genres)
+    end
   end
 
   def add_game
@@ -95,7 +111,7 @@ class App
   end
 
   def list_all_music_albums
-    'mock'
+    MusicAlbumModule.list_albums(@music_albums)
   end
 
   def list_all_games
@@ -107,7 +123,7 @@ class App
   end
 
   def list_all_genres
-    'mock'
+    GenreModule.list_genres(@genres)
   end
 
   def list_all_authors
