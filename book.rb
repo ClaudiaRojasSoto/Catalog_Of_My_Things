@@ -21,7 +21,7 @@ class Book < Item
   def to_hash
     {
       id: @id,
-      label_title: @label.title,
+      label_title: @label.is_a?(Hash) ? @label['title'] : @label.title,
       publish_date: @publish_date.to_s,
       publisher: @publisher,
       cover_state: @cover_state
