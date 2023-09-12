@@ -38,6 +38,5 @@ class Item
 
   def can_be_archived?
     return (Time.now.year - @publish_date.year > 10)
-  
   end
 end
