@@ -37,6 +37,20 @@ class App
 
   private
 
+  def write_books_to_json(filename = 'books.json')
+    books_data = @books.map do |book|
+      {
+        'id' => book.id,
+        'publisher' => book.publisher,
+        'cover_state' => book.cover_state,
+        'publish_date' => book.publish_date,
+        'label' => book.label&.title
+      }
+    end
+
+    File.write(filename, JSON.pretty_generate(books_data))
+  end
+
   def initialize_collections
     @books = []
     @music_albums = []
@@ -98,6 +112,7 @@ class App
       puts 'No labels available. Please add a label first.'
     else
       BookModule.add_book(@books, @genres, @authors, @labels)
+      write_books_to_json # Llama al método para guardar los libros en un archivo JSON
     end
   end
 
