@@ -1,10 +1,9 @@
 class Author
   attr_accessor :first_name, :last_name
 
-  def initialize(id, first_name, last_name, items = [])
+  def initialize(first_name, last_name, items = [], id = 1)
     @first_name = first_name
     @last_name = last_name
-    private
     @items = items
     @id = id
   end
@@ -13,4 +12,8 @@ class Author
     @items.push(item)
     item.author = self
   end
+
+  private
+
+  attr_reader :id, :items
 end
