@@ -1,7 +1,7 @@
 require 'json'
 
 module Output
-	def write_file(taked_game, file_name)
+  def write_file(taked_game, file_name)
     json_file = JSON.generate(taked_game)
     File.open(file_name, 'w')
     File.write(file_name, json_file)
@@ -19,7 +19,7 @@ module Output
 
   def convert_game
     @taked_games.each do |i|
-      @games.push(Game.new(i['multiplayer'], i['last_played_at'],  i['publish_date'], @authors[i['author'].to_i]))
+      @games.push(Game.new(i['multiplayer'], i['last_played_at'], i['publish_date'], @authors[i['author'].to_i]))
     end
   end
 end

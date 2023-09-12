@@ -22,6 +22,6 @@ def add_publish_date
 end
 
 def index_author
-	print 'Add author by the index  : '
+  print 'Add author by the index  : '
   gets.chomp.to_i
 end
