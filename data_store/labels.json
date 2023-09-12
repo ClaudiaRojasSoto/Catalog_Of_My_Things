@@ -4,7 +4,9 @@
     "title": "New",
     "color": "Green",
     "items": [
-      273
+      "#<Book:0x00007fd30a8b1f98>",
+      "#<Book:0x00007f870b045cd8>",
+      "#<Book:0x00007fc328849bb0>"
     ]
   },
   {
@@ -12,7 +14,7 @@
     "title": "Older",
     "color": "Yellow",
     "items": [
-
+      "#<Book:0x00007fd30a8b0850>"
     ]
   },
   {
@@ -20,7 +22,7 @@
     "title": "Gift",
     "color": "Red",
     "items": [
-
+      1368
     ]
   }
 ]

@@ -1,6 +1,34 @@
 [
   {
-    "id": 273,
+    "id": 1368,
+    "label_title": "Gift",
+    "publish_date": "2023-03-03",
+    "publisher": "3",
+    "cover_state": "good"
+  },
+  {
+    "id": 5832,
+    "label_title": "New",
+    "publish_date": "1111-11-11",
+    "publisher": "1",
+    "cover_state": "good"
+  },
+  {
+    "id": 1378,
+    "label_title": "Older",
+    "publish_date": "1212-12-22",
+    "publisher": "2",
+    "cover_state": "bad"
+  },
+  {
+    "id": 983,
+    "label_title": "New",
+    "publish_date": "1111-11-11",
+    "publisher": "1",
+    "cover_state": "good"
+  },
+  {
+    "id": 3152,
     "label_title": "New",
     "publish_date": "1111-11-11",
     "publisher": "1",
