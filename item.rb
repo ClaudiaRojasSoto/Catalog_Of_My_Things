@@ -39,4 +39,16 @@ class Item
   def can_be_archived?
     Time.now.year - @publish_date.year > 10
   end
+
+  public
+
+  def to_hash
+    {
+      id: @id,
+      genre: @genre,
+      author: @author,
+      label: @label,
+      publish_date: @publish_date.to_s
+    }
+  end
 end
