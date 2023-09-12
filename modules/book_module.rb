@@ -14,10 +14,11 @@ module BookModule
     attributes = collect_attributes
     selected_label_index = collect_label_index(labels)
     label = labels[selected_label_index]
-    attributes[:label] = label
 
+    attributes[:label] = label
     book = Book.new(attributes)
     book.add_label(label)
+
     books << book
     puts 'Book successfully added.'
   end
@@ -50,14 +51,12 @@ module BookModule
   def self.collect_label_index(labels)
     puts 'Choose a Label:'
     labels.each_with_index do |label, index|
-      puts "#{index + 1}. #{label.title}"
+      if label.is_a?(Hash) && label.key?('title')
+        puts "#{index + 1}) #{label['title']}"
+      else
+        puts "Invalid label at index #{index}, skipping..."
+      end
     end
-
-    loop do
-      choice = gets.chomp.to_i
-      return choice - 1 if choice.between?(1, labels.length)
-
-      puts "Invalid input. Please enter a number between 1 and #{labels.length}."
-    end
+    gets.chomp.to_i - 1
   end
 end
