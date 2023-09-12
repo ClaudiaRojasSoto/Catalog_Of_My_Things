@@ -105,7 +105,8 @@ class App
   end
 
   def add_game
-    add_games
+    arr = add_games
+    @games.push(Game.new(arr[0], arr[1], arr[2]))
   end
 
   def list_all_books
