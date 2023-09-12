@@ -1,9 +1,23 @@
 [
   {
-    "id": 1579,
+    "id": 8115,
     "publisher": "1",
-    "cover_state": "bad",
-    "publish_date": "2020-12-22",
+    "cover_state": "good",
+    "publish_date": null,
+    "label": "New"
+  },
+  {
+    "id": 1991,
+    "publisher": "1",
+    "cover_state": "good",
+    "publish_date": null,
     "label": "Older"
+  },
+  {
+    "id": 7651,
+    "publisher": "1",
+    "cover_state": "good",
+    "publish_date": "1111-11-11",
+    "label": "Gift"
   }
 ]
