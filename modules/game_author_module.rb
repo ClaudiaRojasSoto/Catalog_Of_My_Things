@@ -7,7 +7,7 @@ module GameAuthor
     multiplayer = add_multiplayer
     last_played = add_last_played_at
     publish_date = add_publish_date
-    return [multiplayer, last_played, publish_date]
+    [multiplayer, last_played, publish_date]
   end
 
   def list_game
@@ -31,6 +31,6 @@ module GameAuthor
     arr.push(Author.new('Martin', 'Acero'))
     arr.push(Author.new('Emmanuella', 'Davila'))
     arr.push(Author.new('Angel', 'Salvador'))
-    return arr
+    arr
   end
 end
