@@ -34,9 +34,8 @@ class App
   def load_data
     collections = DataPersistence.load_data
     @books = collections[:books] || []
-    # @music_albums = collections[:music_albums] || []
     @labels = collections[:labels] || initialize_labels
-    # @genres = collections[:genres] || initialize_genres
+    # inicializar el resto de las colecciones aquí si hay datos previos
   end
 
   def save_data
@@ -48,12 +47,12 @@ class App
   end
 
   def initialize_collections
-    @books = []
-    @music_albums = []
-    @games = []
-    @labels = initialize_labels
-    @genres = initialize_genres
-    @authors = []
+    @books ||= []
+    @music_albums ||= []
+    @games ||= []
+    @labels ||= initialize_labels
+    @genres ||= initialize_genres
+    @initialize_collections ||= []
   end
 
   def initialize_actions
