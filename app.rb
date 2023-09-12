@@ -7,14 +7,18 @@ require_relative 'modules/music_album_module'
 require_relative 'genre'
 require_relative 'modules/genre_module'
 require_relative 'modules/game_author_module'
+require_relative 'modules/make_json_game.rb'
+require 'json'
 
 class App
-  include GameAuthor
+  include GameAuthor, Output
+
   def initialize
     initialize_collections
     initialize_actions
     @games = []
     @authors = initialize_author
+    @taked_games = []
   end
 
   def run
@@ -106,7 +110,9 @@ class App
 
   def add_game
     arr = add_games
-    @games.push(Game.new(arr[0], arr[1], arr[2]))
+    @games.push(Game.new(arr[0], arr[1], arr[2], arr[3]))
+    @taked_games.push({multiplayer: arr[0], last_played_at: arr[1], publish_date: arr[2], author: arr[4]})
+    write_file(@taked_games, 'games.json')
   end
 
   def list_all_books
@@ -118,6 +124,7 @@ class App
   end
 
   def list_all_games
+    read_file_game if @games == []
     list_game
   end
 

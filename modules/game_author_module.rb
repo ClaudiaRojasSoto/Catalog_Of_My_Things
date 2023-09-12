@@ -7,7 +7,9 @@ module GameAuthor
     multiplayer = add_multiplayer
     last_played = add_last_played_at
     publish_date = add_publish_date
-    [multiplayer, last_played, publish_date]
+    list_author
+    author = @authors[index_author]
+    [multiplayer, last_played, publish_date, author, index_author]
   end
 
   def list_game
@@ -15,14 +17,15 @@ module GameAuthor
       puts 'No game yet, Add if you wanna see '
     else
       @games.each_with_index do |elt, idx|
-        puts "\n #{idx}) multiplayer : #{elt.multiplayer} last played at : #{elt.last_played_at}"
+        puts " IDX:#{idx} multiplayer : #{elt.multiplayer} last played at : #{elt.last_played_at} "
+        puts "   Author : '#{elt.author.first_name}  #{elt.author.last_name}'\n "
       end
     end
   end
 
   def list_author
-    @authors.each_with_index do |elt, _idx|
-      puts "\n   ' #{elt.first_name}  #{elt.last_name} ' "
+    @authors.each_with_index do |elt, idx|
+      puts "\n   #{idx}) '#{elt.first_name}  #{elt.last_name}' "
     end
   end
 
