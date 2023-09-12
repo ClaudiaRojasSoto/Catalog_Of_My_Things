@@ -1,7 +1,6 @@
 require_relative '../game'
 
 describe Game do
-
   describe '#can_be_archived?' do
     context 'when last_played_at is greater than 2 years' do
       it 'returns return true' do

@@ -8,19 +8,12 @@ class Game < Item
     super(genre: nil, author: nil, source: nil, label: nil, publish_date: publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
-    
   end
 
   private
 
   def can_be_archived?
     year = Time.now.year - Date.parse(last_played_at).year
-    if (super && year > 2)
-      true
-    else
-      false
-    end
+    (super && year > 2)
   end
 end
-
-

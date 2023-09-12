@@ -2,7 +2,6 @@ require_relative '../author'
 require_relative '../item'
 
 describe Author do
-  
   describe '#Check attribute' do
     context 'Check the first_name and the last_name' do
       it 'returns franck and sefu' do

@@ -8,7 +8,6 @@ class Author
     @id = id
   end
 
-
   def add_item(item)
     @items.push(item)
     item.author = self
