@@ -6,9 +6,11 @@ require_relative 'music_album'
 require_relative 'modules/music_album_module'
 require_relative 'genre'
 require_relative 'modules/genre_module'
+require_relative 'data_persistence'
 
 class App
   def initialize
+    load_data
     initialize_collections
     initialize_actions
   end
@@ -20,6 +22,7 @@ class App
       action = @actions[choice]
       if action
         action.call
+        save_data
       else
         puts 'Invalid choice.'
       end
@@ -27,6 +30,22 @@ class App
   end
 
   private
+
+  def load_data
+    collections = DataPersistence.load_data
+    @books = collections[:books] || []
+    # @music_albums = collections[:music_albums] || []
+    @labels = collections[:labels] || initialize_labels
+    # @genres = collections[:genres] || initialize_genres
+  end
+
+  def save_data
+    collections = {
+      books: @books.map(&:to_hash),
+      labels: @labels.map(&:to_hash)
+    }
+    DataPersistence.save_data(collections)
+  end
 
   def initialize_collections
     @books = []
