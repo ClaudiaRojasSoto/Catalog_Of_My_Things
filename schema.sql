@@ -9,18 +9,11 @@ CREATE TABLE Genre (
     name VARCHAR(255)
 );
 
-<--CREATE TABLE Author (
-<--    id INT PRIMARY KEY AUTO_INCREMENT,
-<--    first_name VARCHAR(255),
-<--    last_name VARCHAR(255)
-<--);
-
 
 CREATE TABLE Item (
     id INT PRIMARY KEY AUTO_INCREMENT,
-     genre_id INT,
+    genre_id INT,
     author_id INT,
-    <--source_id INT,
     label_id INT,
     publish_date DATE,
     archived BOOLEAN,
@@ -39,7 +32,6 @@ CREATE TABLE Book (
 CREATE TABLE MusicAlbum (
     item_id INT PRIMARY KEY,
     on_spotify BOOLEAN,
-    FOREIGN KEY (item_id) REFERENCES Item(id)
 );
 
 
@@ -47,8 +39,8 @@ CREATE TABLE Games (
     id INT GENERATED ALWAYS AS IDENTITY,
     multiplayer BOOLEAN NOT NULL,
     last_payed_at DATE NOT NULL,
-    published_date DATE NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (item_id) REFERENCES Item(id)
 );
 
 
@@ -57,6 +49,5 @@ CREATE TABLE Author (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     items INTEGER,
-    PRIMARY KEY (id),
-    FOREIGN KEY (items) REFERENCES Games(id)
+    PRIMARY KEY (id)
 );
