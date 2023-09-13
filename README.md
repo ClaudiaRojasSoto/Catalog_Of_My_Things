@@ -8,7 +8,7 @@
   - [🛠 Tech-stack ](#-tech-stack-)
   - [🛠 Built With ](#-built-with-)
   - [Key Features ](#key-features-)
-  - [Presentation Video ](#video-demo-live-)
+  - [Presentation Video ](#video-demo-live)
   - [Future Features ](#future-features-)
   - [💻 Getting Started ](#-getting-started-)
     - [Setup ](#setup-)
