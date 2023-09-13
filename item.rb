@@ -5,11 +5,11 @@ class Item
   attr_accessor :id, :genre, :author, :label, :publish_date
 
   def initialize(params = {})
-    @id = Random.rand(1..10_000)
+    @id = params[:id] || Random.rand(1..10_000)
     @genre = params[:genre]
     @author = params[:author]
     @label = params[:label]
-    @publish_date = (Date.strptime(params[:publish_date], '%d-%m-%Y') if params[:publish_date])
+    @publish_date = parse_date(params[:publish_date])
     @archived = false
   end
 
@@ -35,6 +35,17 @@ class Item
   private
 
   attr_reader :archived
+
+  def parse_date(date_string)
+    return nil unless date_string
+
+    begin
+      Date.strptime(date_string, '%d-%m-%Y')
+    rescue Date::Error
+      # Silenciosamente establece la fecha de publicación a nil
+      nil
+    end
+  end
 
   def can_be_archived?
     (Time.now.year - @publish_date.year > 10)

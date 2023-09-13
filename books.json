@@ -1,0 +1,23 @@
+[
+  {
+    "id": 2400,
+    "publisher": "1",
+    "cover_state": "good",
+    "publish_date": null,
+    "label": "New"
+  },
+  {
+    "id": 8047,
+    "publisher": "2",
+    "cover_state": "bad",
+    "publish_date": null,
+    "label": "Gift"
+  },
+  {
+    "id": 8163,
+    "publisher": "3",
+    "cover_state": "bad",
+    "publish_date": "2022-11-30",
+    "label": "New"
+  }
+]
