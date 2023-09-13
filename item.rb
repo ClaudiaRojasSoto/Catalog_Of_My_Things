@@ -5,7 +5,7 @@ class Item
   attr_accessor :id, :genre, :author, :label, :publish_date
 
   def initialize(params = {})
-    @id = Random.rand(1..10_000)
+    @id = params[:id] || Random.rand(1..10_000)
     @genre = params[:genre]
     @author = params[:author]
     @label = params[:label]
