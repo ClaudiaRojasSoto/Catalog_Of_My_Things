@@ -4,15 +4,10 @@ CREATE TABLE Label (
     color VARCHAR(20)
 );
 
-<--CREATE TABLE Source (
-<--    id INT PRIMARY KEY AUTO_INCREMENT,
-<--    name VARCHAR(255)
-<--);
-
-<--CREATE TABLE Genre (
-<--    id INT PRIMARY KEY AUTO_INCREMENT,
-<--    name VARCHAR(255)
-<--);
+CREATE TABLE Genre (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255)
+);
 
 <--CREATE TABLE Author (
 <--    id INT PRIMARY KEY AUTO_INCREMENT,
@@ -41,17 +36,11 @@ CREATE TABLE Book (
     FOREIGN KEY (item_id) REFERENCES Item(id)
 );
 
-<--CREATE TABLE MusicAlbum (
-<--    item_id INT PRIMARY KEY,
-<--    on_spotify BOOLEAN,
-<--    FOREIGN KEY (item_id) REFERENCES Item(id)
-<--);
-
-<--CREATE TABLE Movie (
-<--    item_id INT PRIMARY KEY,
-<--    silent BOOLEAN,
-<--    FOREIGN KEY (item_id) REFERENCES Item(id)
-<--);
+CREATE TABLE MusicAlbum (
+    item_id INT PRIMARY KEY,
+    on_spotify BOOLEAN,
+    FOREIGN KEY (item_id) REFERENCES Item(id)
+);
 
 <--CREATE TABLE Game (
 <--item_id INT PRIMARY KEY,
