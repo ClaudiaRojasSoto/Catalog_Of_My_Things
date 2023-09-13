@@ -27,7 +27,7 @@ module MusicAlbumModule
   def self.on_spotify?
     puts 'Is it on Spotify? (yes/no):'
     answer = gets.chomp
-    answer == 'yes'
+    %w[yes y].include?(answer)
   end
 
   def self.select_genre(genres)
@@ -42,7 +42,36 @@ module MusicAlbumModule
   def self.list_albums(albums)
     puts 'List of Music Albums:'
     albums.each_with_index do |album, index|
-      puts "#{index + 1}. ID: #{album.id}, Genre Title: #{album.genre.name}, On Spotify: #{album.on_spotify}"
+      puts "#{index + 1}. ID: #{album.id}, Genre: #{album.genre.name}, On Spotify: #{album.on_spotify}"
+    end
+  end
+
+  def self.write_file(albums)
+    albums_data = albums.map do |album|
+      {
+        'id' => album.id,
+        'publish_date' => album.publish_date.strftime('%d-%m-%Y'),
+        'on_spotify' => album.on_spotify,
+        'genre' => album.genre.id
+      }
+    end
+    File.write('music_albums.json', JSON.pretty_generate(albums_data))
+  end
+
+  def self.read_file(genres)
+    if File.exist?('music_albums.json')
+      file = File.read('music_albums.json')
+      JSON.parse(file).map do |album|
+        music_album = MusicAlbum.new({
+                                       id: album['id'],
+                                       publish_date: album['publish_date'],
+                                       on_spotify: album['on_spotify']
+                                     })
+        music_album.genre = genres.find { |genre| genre.id == album['genre'] }
+        music_album
+      end
+    else
+      []
     end
   end
 end

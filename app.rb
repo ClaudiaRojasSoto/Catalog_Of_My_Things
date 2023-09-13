@@ -76,9 +76,9 @@ class App
 
   def initialize_collections
     @books = []
-    @music_albums = []
-    @labels = initialize_labels
     @genres = initialize_genres
+    @music_albums = MusicAlbumModule.read_file(@genres)
+    @labels = initialize_labels
   end
 
   def initialize_actions
@@ -144,6 +144,7 @@ class App
       puts 'No labels or genres available. Please add them first.'
     else
       MusicAlbumModule.add_music_album(@music_albums, @genres)
+      MusicAlbumModule.write_file(@music_albums)
     end
   end
 
